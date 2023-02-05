@@ -15,12 +15,13 @@ import com.example.m7hw1.databinding.FragmentNoteBinding
 import com.example.m7hw1.domain.model.Note
 import com.example.m7hw1.presentation.fragment.UIState
 import dagger.hilt.android.HiltAndroidApp
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
 class NoteFragment : Fragment() {
 
-    private val viewModel : NoteViewModel by viewModels()
+    private val viewModel by viewModels<NoteViewModel>()
     private lateinit var binding: FragmentNoteBinding
     private lateinit var adapter: NotesAdapter
 
@@ -36,27 +37,25 @@ class NoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getNotes()
-
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getNoteState.collect {
                     when(it) {
                         is UIState.Empty -> {}
                         is UIState.Error -> {
-                            Toast.makeText(requireContext() , it.message , Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext() , it.message  , Toast.LENGTH_SHORT).show()
                         }
                         is UIState.Loading -> {
-                           binding.fub
+                            //TODO show progress bar
                         }
                         is UIState.Success -> {
-                            binding.recyclerView.adapter  = adapter
+                            adapter.submitList(it.data)
                         }
                     }
                 }
             }
         }
-
-
+        binding.recyclerView.adapter = adapter
     }
 
 }
