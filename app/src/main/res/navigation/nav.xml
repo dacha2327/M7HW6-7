@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/noteFragment">
 
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.example.m7hw1.presentation.EditFragment"
+        android:name="com.example.m7hw1.presentation.fragment.edit_note.EditFragment"
         android:label="fragment_edit"
         tools:layout="@layout/fragment_edit" />
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.m7hw1.presentation.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        android:id="@+id/noteFragment"
+        android:name="com.example.m7hw1.presentation.fragment.notes.NoteFragment"
+        android:label="NoteFragment"
+        tools:layout="@layout/fragment_note"/>
+
 </navigation>
