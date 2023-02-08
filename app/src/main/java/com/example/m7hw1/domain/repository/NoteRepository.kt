@@ -6,11 +6,11 @@ import java.util.concurrent.Flow
 
 interface NoteRepository {
 
-    fun createNote(note: Note) : kotlinx.coroutines.flow.Flow<Resource<Unit>>
+    fun createNote(note: Note) : kotlinx.coroutines.flow.Flow<Resource<suspend () -> Unit>>
 
-    fun editNote(note: Note) : kotlinx.coroutines.flow.Flow<Resource<Unit>>
+    fun editNote(note: Note) : kotlinx.coroutines.flow.Flow<Resource<suspend () -> Unit>>
 
-    fun deleteNote(note: Note) : kotlinx.coroutines.flow.Flow<Resource<Unit>>
+    fun deleteNote(note: Note) : kotlinx.coroutines.flow.Flow<Resource<suspend () -> Unit>>
 
-    fun getNote(): kotlinx.coroutines.flow.Flow<Resource<List<Note>>>
+    fun getNote(): kotlinx.coroutines.flow.Flow<Resource<suspend () -> List<Note>>>
 }
