@@ -13,9 +13,8 @@ abstract class BaseFragment : Fragment() {
     protected fun <T> StateFlow<UIState<Unit>>.collectState(
         onLoading: () -> Unit,
         onError : (message : String) -> Unit ,
-        onSuccess : (data : T) -> Unit
+        onSuccess : (data : String) -> Unit
     ) {
-
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 this@collectState.collect {
@@ -28,6 +27,7 @@ abstract class BaseFragment : Fragment() {
                             onLoading()
                         }
                         is UIState.Success -> {
+                            onSuccess(it.data.toString())
                         }
                     }
                 }
