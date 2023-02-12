@@ -8,22 +8,32 @@
     tools:context=".presentation.fragment.edit_note.EditFragment">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/et_title"
+        android:hint="title"
         android:layout_marginTop="16dp"
-        android:hint="@string/write"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:inputType="textCapSentences"
-        android:autofillHints="" />
+        />
+
+    <EditText
+        android:id="@+id/et_desc"
+        android:hint="decs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_title"
+         />
+
     <Button
         android:layout_marginTop="32dp"
         android:id="@+id/btnSave"
         android:text="@string/remove"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/et_desc"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

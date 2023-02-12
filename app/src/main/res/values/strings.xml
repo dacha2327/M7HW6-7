@@ -6,5 +6,6 @@
     <string name="write">введите текст</string>
     <string name="remove">remove</string>
     <string name="description">description</string>
+    <string name="title">title</string>
     <string name="note">Note</string>
 </resources>

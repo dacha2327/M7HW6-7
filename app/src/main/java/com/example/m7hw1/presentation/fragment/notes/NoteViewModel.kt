@@ -31,6 +31,6 @@ class NoteViewModel @Inject constructor(
     }
 
     fun deleteNotes(note: Note) {
-        deleteNotesUseCase.deleteNotes(note)
+        deleteNotesUseCase.deleteNotes(note).collectFlow(_deleteNotesState)
     }
 }

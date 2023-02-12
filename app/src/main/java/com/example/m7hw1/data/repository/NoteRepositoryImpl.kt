@@ -7,20 +7,18 @@ import com.example.m7hw1.data.mappers.toNoteEntity
 import com.example.m7hw1.domain.model.Note
 import com.example.m7hw1.domain.repository.NoteRepository
 import com.example.m7hw1.domain.utils.Resource
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import java.io.IOException
 import javax.inject.Inject
 
-class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao) : BaseRepository() , NoteRepository {
+class NoteRepositoryImpl @Inject constructor(
+    private val noteDao: NoteDao
+) : BaseRepository(), NoteRepository {
 
-    override fun createNote(note: Note) = doRequest {
+    override fun createNote(note: Note): Flow<Resource<Unit>> = doRequest {
         noteDao.createNote(note.toNoteEntity())
     }
 
-    override fun editNote(note: Note) = doRequest {
+    override fun editNote(note: Note) : Flow<Resource<Unit>> = doRequest {
         noteDao.editNote(note.toNoteEntity())
     }
 
