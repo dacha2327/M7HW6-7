@@ -11,40 +11,43 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.m7hw1.R
 import com.example.m7hw1.databinding.FragmentEditBinding
 import com.example.m7hw1.domain.model.Note
 import com.example.m7hw1.presentation.base.BaseFragment
 import com.example.m7hw1.presentation.fragment.UIState
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-class EditFragment : BaseFragment() {
+@AndroidEntryPoint
+class EditFragment : BaseFragment(R.layout.fragment_edit) {
 
     private val viewModel by viewModels<EditViewModel>()
-    private lateinit var binding: FragmentEditBinding
+    private val binding by viewBinding(FragmentEditBinding::bind)
+    private var note : Note? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentEditBinding.inflate(layoutInflater  , container , false)
-        return binding.root
+    override fun initialize() {
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.createNotes(Note(
-            title = binding.etTitle.text.toString(),
-            desc = binding.etDesc.text.toString(),
-            createdAd = System.currentTimeMillis()
-        ))
+    override fun setupListeners() {
+        binding.btnSave.setOnClickListener {
+            viewModel.createNotes(Note(
+                title = binding.etTitle.text.toString(),
+                desc = binding.etDesc.text.toString(),
+                createdAd = System.currentTimeMillis()
+            ))
+        }
+    }
 
+    override fun setupSubscribers() {
         viewModel.createNoteState.collectState<UIState<Unit>>(
+            onLoading = {},
+
             onError = {
                 Toast.makeText(requireContext() , it  , Toast.LENGTH_SHORT).show()
             },
-            onLoading = {},
 
             onSuccess = {
                 findNavController().navigateUp()
@@ -62,7 +65,5 @@ class EditFragment : BaseFragment() {
                 findNavController().navigateUp()
             }
         )
-
-
     }
 }

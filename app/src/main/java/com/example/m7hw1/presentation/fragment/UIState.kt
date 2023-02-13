@@ -1,8 +1,5 @@
 package com.example.m7hw1.presentation.fragment
 
-import com.example.m7hw1.domain.model.Note
-import com.example.m7hw1.domain.utils.Resource
-
 sealed class UIState<T> {
     class Loading<T> : UIState<T>()
     class Empty<T> : UIState<T>()
