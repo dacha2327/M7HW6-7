@@ -48,6 +48,7 @@ dependencies {
     implementation (Deps.UI.material)
     implementation (Deps.UI.constraint)
     testImplementation (Deps.UI.junit)
+    implementation(Deps.UI.fragment)
     androidTestImplementation (Deps.UI.extJunit)
     androidTestImplementation (Deps.UI.espresso)
 
@@ -64,7 +65,7 @@ dependencies {
     implementation(Deps.LifeCycle.viewModel)
     implementation(Deps.LifeCycle.lfRuntime)
 
-     //dager
+     //dagger
     implementation(Deps.Dagger.hilt)
     kapt(Deps.Dagger.compiler)
 

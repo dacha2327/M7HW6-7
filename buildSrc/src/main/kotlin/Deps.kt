@@ -1,6 +1,6 @@
 object Versions {
     const val AGP = "7.2.2"
-    const val kotlin = "1.6.10"
+    const val kotlin = "1.7.10"
     const val hilt = "2.44"
     const val androidCore = "1.7.0"
     const val appcompat = "1.5.1"
@@ -12,6 +12,7 @@ object Versions {
     const val navGraph = "2.5.3"
     const val lifecycle = "2.5.1"
     const val viewBindingPropertyDelegate = "1.5.8"
+    const val fragment = "1.5.5"
 }
 
 object Deps {
@@ -24,12 +25,13 @@ object Deps {
         const val junit = "junit:junit:${Versions.junit}"
         const val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+        const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     }
 
     object Room {
         const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
-        const val roomCompiler = "androidx.room:room-compiler${Versions.room}"
-        const val room = "androidx.room:room-ktx${Versions.room}"
+        const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+        const val room = "androidx.room:room-ktx:${Versions.room}"
     }
 
     object NavGraph {

@@ -28,7 +28,7 @@ abstract class BaseFragment(@LayoutRes layoutUd : Int) : Fragment() {
 
     protected open fun setupListeners() {}
 
-    protected fun <T> StateFlow<UIState<Unit>>.collectState(
+    protected fun <T> StateFlow<UIState<T>>.collectState(
         onLoading: () -> Unit,
         onError : (message : String) -> Unit ,
         onSuccess : (data : T) -> Unit

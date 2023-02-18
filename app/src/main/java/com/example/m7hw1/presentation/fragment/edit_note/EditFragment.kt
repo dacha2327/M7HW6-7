@@ -43,7 +43,7 @@ class EditFragment : BaseFragment(R.layout.fragment_edit) {
 
     override fun setupSubscribers() {
 
-        viewModel.createNoteState.collectState<UIState<Unit>>(
+        viewModel.createNoteState.collectState(
             onLoading = {},
 
             onError = {
@@ -55,7 +55,7 @@ class EditFragment : BaseFragment(R.layout.fragment_edit) {
             }
         )
 
-        viewModel.editNoteState.collectState<UIState<Unit>>(
+        viewModel.editNoteState.collectState(
             onError = {
                 Toast.makeText(requireContext() , it  , Toast.LENGTH_SHORT).show()
             },
