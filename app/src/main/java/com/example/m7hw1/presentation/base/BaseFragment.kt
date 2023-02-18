@@ -45,7 +45,7 @@ abstract class BaseFragment(@LayoutRes layoutUd : Int) : Fragment() {
                             onLoading()
                         }
                         is UIState.Success -> {
-                            onSuccess(it.data)
+                              onSuccess(it.data)
                         }
                     }
                 }

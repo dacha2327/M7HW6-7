@@ -2,9 +2,7 @@ package com.example.m7hw1.presentation.fragment.edit_note
 
 import com.example.m7hw1.domain.model.Note
 import com.example.m7hw1.domain.usecases.CreateNotesUseCase
-import com.example.m7hw1.domain.usecases.DeleteNotesUseCase
 import com.example.m7hw1.domain.usecases.EditNotesUseCase
-import com.example.m7hw1.domain.usecases.GetNotesUseCase
 import com.example.m7hw1.presentation.base.BaseViewModel
 import com.example.m7hw1.presentation.fragment.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel

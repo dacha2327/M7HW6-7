@@ -12,6 +12,8 @@ import com.example.m7hw1.domain.model.Note
 class NotesAdapter : androidx.recyclerview.widget.ListAdapter<Note , NotesAdapter.NoteViewHolder>(
     NoteDiffUtil()
 ) {
+    var onLongClick:((pos:Int) -> Unit)? = null
+    var onClick: ((note: Note) ->Unit)? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -26,11 +28,20 @@ class NotesAdapter : androidx.recyclerview.widget.ListAdapter<Note , NotesAdapte
         holder.bind(getItem(position))
     }
 
-    class NoteViewHolder(private var binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class NoteViewHolder(private var binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item : Note) {
             binding.textTitle.text = item.title
             binding.textDesc.text = item.desc
+
+            itemView.setOnClickListener {
+                onClick?.invoke(item)
+            }
+
+            itemView.setOnLongClickListener {
+                onLongClick?.invoke(adapterPosition)
+                return@setOnLongClickListener true
+            }
         }
     }
 

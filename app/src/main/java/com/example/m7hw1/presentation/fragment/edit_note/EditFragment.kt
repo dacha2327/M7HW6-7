@@ -33,7 +33,7 @@ class EditFragment : BaseFragment(R.layout.fragment_edit) {
 
     override fun setupListeners() {
         binding.btnSave.setOnClickListener {
-            viewModel.createNotes(Note(
+             viewModel.createNotes(Note(
                 title = binding.etTitle.text.toString(),
                 desc = binding.etDesc.text.toString(),
                 createdAd = System.currentTimeMillis()
@@ -42,6 +42,7 @@ class EditFragment : BaseFragment(R.layout.fragment_edit) {
     }
 
     override fun setupSubscribers() {
+
         viewModel.createNoteState.collectState<UIState<Unit>>(
             onLoading = {},
 
@@ -66,4 +67,9 @@ class EditFragment : BaseFragment(R.layout.fragment_edit) {
             }
         )
     }
+
+    companion object {
+        const val CREATE_NOTE = "note"
+    }
+
 }

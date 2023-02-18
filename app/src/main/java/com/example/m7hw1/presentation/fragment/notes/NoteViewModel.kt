@@ -1,17 +1,13 @@
 package com.example.m7hw1.presentation.fragment.notes
 
-import androidx.lifecycle.viewModelScope
 import com.example.m7hw1.domain.model.Note
 import com.example.m7hw1.domain.usecases.DeleteNotesUseCase
 import com.example.m7hw1.domain.usecases.GetNotesUseCase
-import com.example.m7hw1.domain.utils.Resource
 import com.example.m7hw1.presentation.base.BaseViewModel
 import com.example.m7hw1.presentation.fragment.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
