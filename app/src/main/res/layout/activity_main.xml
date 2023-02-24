@@ -17,13 +17,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:navGraph="@navigation/nav" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fub"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
